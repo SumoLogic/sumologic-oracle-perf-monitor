@@ -25,17 +25,17 @@ flag = True
 try:
 	oraPassword = parser.get('dbLogin', 'oraPassword')
 except:
-	print('Error reading password from config file {}, so will be reading from environment variable DB_PASSWORD', configFilename) 
+	print('Error reading password from config file {}, so will be reading from environment variable DB_PASSWORD'.format(configFilename))
 else:
     if(oraPassword is None or oraPassword.strip() == ""):
-    	print('Password is empty in config file {}, so reading from environment variable DB_PASSWORD', configFilename)
+    	print('Password is empty in config file {}, so reading from environment variable DB_PASSWORD'.format(configFilename))
     else:
         flag = False
 
 if flag:
     oraPassword = os.environ.get('DB_PASSWORD')
     if (oraPassword is None or oraPassword.strip() == ""): 
-        print('Password not available in config file {} and also in environment variable DB_PASSWORD', configFilename)
+        print('Password not available in config file {} and also in environment variable DB_PASSWORD'.format(configFilename))
         exit()
  
 oraHost = parser.get('dbLogin', 'oraHost')
